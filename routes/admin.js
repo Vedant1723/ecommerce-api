@@ -72,4 +72,17 @@ router.delete("/products/delete/:id", adminAuth, adminController.deleteProduct);
 /*
 -------------</Products>-------------
 */
+
+/*
+-------------<Order>-------------
+*/
+
+// @PUT Route
+// @DESC Update Order Status
+router.put("/order/:orderID", adminAuth, adminController.updateOrder);
+
+/*
+-------------</Order>-------------
+*/
+
 module.exports = router;

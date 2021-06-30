@@ -4,6 +4,7 @@ require("dotenv").config();
 const bcrypt = require("bcryptjs");
 const Category = require("../models/Category");
 const Product = require("../models/Product");
+const Order = require("../models/Order");
 
 /*
 -------------<Auth>-------------
@@ -263,4 +264,35 @@ exports.deleteProduct = async (req, res) => {
 
 /*
 -------------</Products>-------------
+*/
+
+/*
+-------------<Order>-------------
+*/
+
+exports.updateOrder = async (req, res) => {
+  try {
+    const { orderStatus } = req.body;
+
+    let order = await Order.findById(req.params.orderID);
+
+    if (!order) {
+      return res.json({ statusCode: 400, message: "Order ID not Valid" });
+    }
+
+    await Order.findOneAndUpdate(
+      { _id: req.params.orderID },
+      {
+        $set: { orderStatus: orderStatus },
+      },
+      { new: true }
+    );
+    return res.json({ statusCode: 200, message: "Order Status Updated!" });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+/*
+-------------</Order>-------------
 */
