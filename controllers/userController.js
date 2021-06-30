@@ -4,7 +4,12 @@ const Otp = require("../models/Otp");
 const otpGenerator = require("../config/otpGenerator");
 const sendMail = require("../config/sendMail");
 const jwt = require("jsonwebtoken");
+const Product = require("../models/Product");
 require("dotenv").config();
+
+/*
+-------------<Auth>-------------
+*/
 
 exports.signup = async (req, res) => {
   try {
@@ -145,3 +150,24 @@ exports.login = async (req, res) => {
     console.log(error.message);
   }
 };
+
+/*
+-------------</Auth>-------------
+*/
+
+/*
+-------------<Products>-------------
+*/
+
+exports.getAllProducts = async (req, res) => {
+  try {
+    const products = await Product.find();
+    return res.json(products);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+/*
+-------------</Products>-------------
+*/

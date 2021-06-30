@@ -28,6 +28,11 @@ const UserSchema = new mongoose.Schema({
   location: {
     type: String,
   },
+  status: {
+    type: String,
+    enum: ["active", "inactive"],
+    default: "active",
+  },
 });
 
 module.exports = User = mongoose.model("user", UserSchema);
