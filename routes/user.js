@@ -27,6 +27,10 @@ router.post("/confirm-otp", userController.confirmOTP);
 */
 
 // @GET Route
+// @DESC Get Product By ID
+router.get("/product/:id", userController.getProductByID);
+
+// @GET Route
 // @DESC Get all Products
 router.post("/products/all", userController.getAllProducts);
 

@@ -161,6 +161,15 @@ exports.login = async (req, res) => {
 -------------<Products>-------------
 */
 
+exports.getProductById = async (req, res) => {
+  try {
+    var product = await Product.findById(req.params.id);
+    return res.json(product);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 exports.getAllProducts = async (req, res) => {
   try {
     const products = await Product.find();
