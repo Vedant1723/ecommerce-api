@@ -111,6 +111,15 @@ exports.login = async (req, res) => {
 -------------<Category>-------------
 */
 
+exports.getAllCategories = async (req, res) => {
+  try {
+    const categories = await Category.find();
+    return res.json(categories);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 exports.createCategory = async (req, res) => {
   try {
     const { name } = req.body;

@@ -23,6 +23,10 @@ router.post("/login", adminController.login);
 -------------<Category>-------------
 */
 
+// @GET Route
+// @DESC Get All Categories
+router.get("/all-categories", adminAuth, adminController.getAllCategories);
+
 // @POST Route
 // @DESC Create Category
 router.post("/create-category", adminAuth, adminController.createCategory);
